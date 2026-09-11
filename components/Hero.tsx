@@ -102,17 +102,24 @@ export default function Hero() {
           custom={6}
           className="order-first lg:order-last lg:flex lg:justify-center lg:items-center relative"
         >
-          {/* Glow background */}
-          <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-accent/30 to-transparent rounded-full blur-[80px] -z-10" />
+          {/* Glow background - circular radial */}
+          <div
+            className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] -z-10 pointer-events-none"
+            style={{
+              width: "400px",
+              height: "400px",
+              background: "radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%)",
+            }}
+          />
 
-          {/* Decorative accent marks */}
+          {/* Decorative accent marks around circle */}
           {[
-            { top: "-24px", left: "50%", transform: "translateX(-50%)", delay: 0 },
-            { top: "-16px", right: "40px", delay: 0.5 },
-            { top: "50%", right: "-24px", transform: "translateY(-50%)", delay: 1 },
-            { bottom: "-24px", left: "50%", transform: "translateX(-50%)", delay: 1.5 },
-            { bottom: "-16px", left: "40px", delay: 2 },
-            { top: "50%", left: "-24px", transform: "translateY(-50%)", delay: 2.5 },
+            { top: "-200px", left: "50%", transform: "translateX(-50%)", delay: 0 }, // top
+            { top: "-100px", right: "-100px", delay: 0.5 }, // top-right
+            { top: "50%", right: "-200px", transform: "translateY(-50%)", delay: 1 }, // right
+            { bottom: "-100px", right: "-100px", delay: 1.5 }, // bottom-right
+            { bottom: "-200px", left: "50%", transform: "translateX(-50%)", delay: 2 }, // bottom
+            { bottom: "-100px", left: "-100px", delay: 2.5 }, // bottom-left
           ].map((mark, i) => (
             <motion.div
               key={i}
@@ -134,11 +141,11 @@ export default function Hero() {
             />
           ))}
 
-          {/* Photo frame */}
+          {/* Photo frame - circular */}
           <motion.div
             animate={{ y: [0, -8, 0] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-80 h-96 rounded-2xl overflow-hidden border border-accent/20 lg:w-80 lg:h-96 sm:w-56 sm:h-72 mx-auto"
+            className="relative w-56 h-56 rounded-full overflow-hidden lg:w-80 lg:h-80 mx-auto"
           >
             <Image
               src="/cassy-photo.png"
