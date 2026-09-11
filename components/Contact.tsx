@@ -48,8 +48,8 @@ export default function Contact() {
       });
 
       if (response.ok) {
-        setStatus("sent");
         e.currentTarget.reset();
+        setStatus("sent");
       } else {
         setStatus("error");
       }
