@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { SiOdoo, SiReact } from "react-icons/si";
@@ -92,7 +93,36 @@ export default function Hero() {
         />
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 w-full pt-24 pb-16 relative">
+      <div className="max-w-6xl mx-auto px-6 w-full pt-24 pb-16 relative grid grid-cols-1 lg:grid-cols-2 lg:gap-12 lg:items-center">
+        {/* Right column (top on mobile): Photo */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          custom={6}
+          className="order-first lg:order-last lg:flex lg:justify-center lg:items-center relative"
+        >
+          {/* Glow background */}
+          <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-accent/30 to-transparent rounded-full blur-[80px] -z-10" />
+
+          {/* Photo frame */}
+          <motion.div
+            animate={{ y: [0, -8, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative w-80 h-96 rounded-2xl overflow-hidden border border-accent/20 lg:w-80 lg:h-96 sm:w-56 sm:h-72 mx-auto"
+          >
+            <Image
+              src="/cassy-photo.png"
+              alt="Cassy Raobijaona"
+              fill
+              className="object-cover"
+              priority
+            />
+          </motion.div>
+        </motion.div>
+
+        {/* Left column: Text content */}
+        <div className="mt-8 lg:mt-0">
         <motion.p
           variants={fadeUp}
           initial="hidden"
@@ -190,6 +220,7 @@ export default function Hero() {
             <FiGithub size={20} />
           </a>
         </motion.div>
+        </div>
 
         {/* Floating skill badges */}
         {skills.map((skill, i) => (
@@ -211,14 +242,12 @@ export default function Hero() {
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted"
+        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-muted flex-col items-center gap-2"
       >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs tracking-widest uppercase opacity-60">
-            Scroll
-          </span>
-          <FiArrowDown size={20} />
-        </div>
+        <span className="text-xs tracking-widest uppercase opacity-60">
+          Scroll
+        </span>
+        <FiArrowDown size={20} />
       </motion.div>
     </section>
   );
