@@ -140,30 +140,35 @@ export default function About() {
           À propos
         </motion.p>
 
-        <motion.h1
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={1}
-          className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] max-w-3xl"
-        >
-          Mon profil
-        </motion.h1>
+        <div>
+          {/* Text column */}
+          <div>
+            <motion.h1
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={1}
+              className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight leading-[1.15] max-w-3xl"
+            >
+              Mon profil
+            </motion.h1>
 
-        <motion.p
-          variants={fadeUp}
-          initial="hidden"
-          animate="show"
-          custom={2}
-          className="mt-6 text-lg text-foreground/90 max-w-2xl"
-        >
-          Étudiante en Licence Informatique, parcours Transformation
-          Numérique à HEI Madagascar. Je fais le lien entre les besoins
-          métier et les solutions techniques : je comprends le marketing
-          digital, les ERP (Odoo), la data et le développement web, et je
-          sais coordonner un projet numérique de bout en bout — de l&apos;idée
-          à la mise en ligne.
-        </motion.p>
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="show"
+              custom={2}
+              className="mt-6 text-lg text-foreground/90 max-w-2xl"
+            >
+              Étudiante en Licence Informatique, parcours Transformation
+              Numérique à HEI Madagascar. Je fais le lien entre les besoins
+              métier et les solutions techniques : je comprends le marketing
+              digital, les ERP (Odoo), la data et le développement web, et je
+              sais coordonner un projet numérique de bout en bout — de l&apos;idée
+              à la mise en ligne.
+            </motion.p>
+          </div>
+        </div>
 
         {/* Skill blocks */}
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
