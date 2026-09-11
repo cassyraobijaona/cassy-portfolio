@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiCheck, FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
+import { FiAlertCircle, FiCheck, FiGithub, FiLinkedin, FiMail, FiSend } from "react-icons/fi";
 import { profile } from "../lib/profile";
 
 const fadeUp = {
@@ -24,12 +24,38 @@ const directLinks = [
 ];
 
 export default function Contact() {
-  const [status, setStatus] = useState<"idle" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">("idle");
 
-  // TODO: brancher un envoi réel (mailto ou service comme Resend) avant mise en ligne.
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sent");
+    setStatus("loading");
+
+    try {
+      const formData = new FormData(e.currentTarget);
+      const data = {
+        name: formData.get("name") as string,
+        email: formData.get("email") as string,
+        message: formData.get("message") as string,
+      };
+
+      const response = await fetch("https://formspree.io/f/xkjneyne", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus("sent");
+        e.currentTarget.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
   }
 
   return (
@@ -120,10 +146,14 @@ export default function Contact() {
             <div className="flex items-center gap-4 mt-2">
               <button
                 type="submit"
-                disabled={status === "sent"}
+                disabled={status === "loading" || status === "sent"}
                 className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium transition-transform hover:scale-105 disabled:opacity-70 disabled:hover:scale-100"
               >
-                {status === "sent" ? (
+                {status === "loading" ? (
+                  <>
+                    <span className="inline-block animate-spin">↻</span> Envoi...
+                  </>
+                ) : status === "sent" ? (
                   <>
                     <FiCheck /> Message noté
                   </>
@@ -144,6 +174,21 @@ export default function Contact() {
                   >
                     Merci ! Je reviens vers vous rapidement.
                   </motion.p>
+                )}
+                {status === "error" && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    className="flex items-center gap-2 text-sm text-orange-400"
+                  >
+                    <FiAlertCircle size={16} />
+                    <span>Une erreur est survenue, réessaie ou écris à{" "}
+                      <a href={`mailto:${profile.email}`} className="underline hover:text-orange-300">
+                        {profile.email}
+                      </a>
+                    </span>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
