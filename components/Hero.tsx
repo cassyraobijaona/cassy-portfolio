@@ -105,22 +105,34 @@ export default function Hero() {
           {/* Glow background */}
           <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-accent/30 to-transparent rounded-full blur-[80px] -z-10" />
 
-          {/* Rotating ring overlay */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 flex items-center justify-center"
-          >
-            <svg width="352" height="416" viewBox="0 0 352 416" className="absolute">
-              <defs>
-                <linearGradient id="ringGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.6" />
-                  <stop offset="100%" stopColor="#f59e0b" stopOpacity="0.3" />
-                </linearGradient>
-              </defs>
-              <circle cx="176" cy="208" r="170" fill="none" stroke="url(#ringGradient)" strokeWidth="2" />
-            </svg>
-          </motion.div>
+          {/* Decorative accent marks */}
+          {[
+            { top: "-24px", left: "50%", transform: "translateX(-50%)", delay: 0 },
+            { top: "-16px", right: "40px", delay: 0.5 },
+            { top: "50%", right: "-24px", transform: "translateY(-50%)", delay: 1 },
+            { bottom: "-24px", left: "50%", transform: "translateX(-50%)", delay: 1.5 },
+            { bottom: "-16px", left: "40px", delay: 2 },
+            { top: "50%", left: "-24px", transform: "translateY(-50%)", delay: 2.5 },
+          ].map((mark, i) => (
+            <motion.div
+              key={i}
+              animate={{ opacity: [0.3, 1, 0.3] }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                delay: mark.delay,
+                ease: "easeInOut",
+              }}
+              className="absolute w-0.5 h-5 bg-accent rounded-full pointer-events-none"
+              style={{
+                top: mark.top,
+                bottom: mark.bottom,
+                left: mark.left,
+                right: mark.right,
+                transform: mark.transform,
+              }}
+            />
+          ))}
 
           {/* Photo frame */}
           <motion.div
