@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { SiOdoo, SiReact } from "react-icons/si";
 import { FiDatabase, FiTrendingUp } from "react-icons/fi";
 import { profile } from "../lib/profile";
@@ -102,59 +102,52 @@ export default function Hero() {
           custom={6}
           className="order-first lg:order-last lg:flex lg:justify-center lg:items-center relative"
         >
-          {/* Glow background - circular radial */}
-          <div
-            className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] -z-10 pointer-events-none"
-            style={{
-              width: "400px",
-              height: "400px",
-              background: "radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%)",
-            }}
-          />
-
-          {/* Decorative accent marks around circle */}
-          {[
-            { top: "-200px", left: "50%", transform: "translateX(-50%)", delay: 0 }, // top
-            { top: "-100px", right: "-100px", delay: 0.5 }, // top-right
-            { top: "50%", right: "-200px", transform: "translateY(-50%)", delay: 1 }, // right
-            { bottom: "-100px", right: "-100px", delay: 1.5 }, // bottom-right
-            { bottom: "-200px", left: "50%", transform: "translateX(-50%)", delay: 2 }, // bottom
-            { bottom: "-100px", left: "-100px", delay: 2.5 }, // bottom-left
-          ].map((mark, i) => (
-            <motion.div
-              key={i}
-              animate={{ opacity: [0.3, 1, 0.3] }}
-              transition={{
-                duration: 3.5,
-                repeat: Infinity,
-                delay: mark.delay,
-                ease: "easeInOut",
-              }}
-              className="absolute w-0.5 h-5 bg-accent rounded-full pointer-events-none"
+          {/* Photo + decorative marks wrapper - positioned relative for absolute children */}
+          <div className="relative">
+            {/* Glow background - circular radial */}
+            <div
+              className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] -z-10 pointer-events-none"
               style={{
-                top: mark.top,
-                bottom: mark.bottom,
-                left: mark.left,
-                right: mark.right,
-                transform: mark.transform,
+                width: "400px",
+                height: "400px",
+                background: "radial-gradient(circle, rgba(56, 189, 248, 0.3) 0%, transparent 70%)",
               }}
             />
-          ))}
 
-          {/* Photo frame - circular */}
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="relative w-56 h-56 rounded-full overflow-hidden lg:w-80 lg:h-80 mx-auto"
-          >
-            <Image
-              src="/cassy-photo.png"
-              alt="Cassy Raobijaona"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
+            {/* Rotating dashed ring around photo */}
+            <motion.svg
+              animate={{ rotate: 360 }}
+              transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+              viewBox="0 0 400 400"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[260px] h-[260px] lg:w-[376px] lg:h-[376px] pointer-events-none"
+            >
+              <circle
+                cx="200"
+                cy="200"
+                r="195"
+                fill="none"
+                stroke="#38bdf8"
+                strokeWidth="2"
+                strokeDasharray="4 12"
+                opacity="0.6"
+              />
+            </motion.svg>
+
+            {/* Photo frame - circular */}
+            <motion.div
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-56 h-56 rounded-full overflow-hidden lg:w-80 lg:h-80 mx-auto"
+            >
+              <Image
+                src="/cassy-photo.png"
+                alt="Cassy Raobijaona"
+                fill
+                className="object-cover"
+                priority
+              />
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Left column: Text content */}
@@ -276,16 +269,6 @@ export default function Hero() {
         ))}
       </div>
 
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-muted flex-col items-center gap-2"
-      >
-        <span className="text-xs tracking-widest uppercase opacity-60">
-          Scroll
-        </span>
-        <FiArrowDown size={20} />
-      </motion.div>
     </section>
   );
 }
