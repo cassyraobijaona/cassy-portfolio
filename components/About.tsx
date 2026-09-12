@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { profile } from "../lib/profile";
 import {
   FiCalendar,
   FiCompass,
   FiDatabase,
+  FiDownload,
   FiGitBranch,
   FiLayers,
   FiMail,
@@ -224,12 +226,13 @@ export default function About() {
           custom={0}
           className="mt-16"
         >
-          <Link
-            href="/contact"
+          <a
+            href={profile.cvPath}
+            download
             className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-medium transition-transform hover:scale-105"
           >
-            <FiMail /> Me contacter
-          </Link>
+            <FiDownload /> Télécharger mon CV
+          </a>
         </motion.div>
       </div>
     </main>

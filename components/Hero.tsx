@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { FiArrowDown, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiArrowDown, FiDownload, FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { SiOdoo, SiReact } from "react-icons/si";
 import { FiDatabase, FiTrendingUp } from "react-icons/fi";
 import { profile } from "../lib/profile";
@@ -215,12 +215,13 @@ export default function Hero() {
           >
             Voir mes projets
           </Link>
-          <Link
-            href="/contact"
+          <a
+            href={profile.cvPath}
+            download
             className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-medium text-foreground/90 transition-colors hover:border-white/40 hover:text-foreground"
           >
-            <FiMail /> Me contacter
-          </Link>
+            <FiDownload /> Télécharger mon CV
+          </a>
         </motion.div>
 
         <motion.div
