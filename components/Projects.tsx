@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiChevronDown } from "react-icons/fi";
 import { projects, type Project } from "../lib/projects";
 import ProjectImage from "./ProjectImage";
+import ProjectModal from "./ProjectModal";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -26,92 +27,109 @@ const cardVariants = {
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [expanded, setExpanded] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   return (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      custom={index}
-      className="rounded-2xl border border-white/10 bg-surface/60 overflow-hidden"
-    >
-      <button
-        type="button"
-        onClick={() => setExpanded((v) => !v)}
-        aria-expanded={expanded}
-        className="w-full text-left flex flex-col sm:flex-row gap-5 p-5 sm:items-center"
+    <>
+      <motion.div
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+        custom={index}
+        className="rounded-2xl border border-white/10 bg-surface/60 overflow-hidden"
       >
-        <div className="sm:w-56 shrink-0">
-          <ProjectImage image={project.image} icon={project.icon} alt={project.title} />
-        </div>
+        <button
+          type="button"
+          onClick={() => setExpanded((v) => !v)}
+          aria-expanded={expanded}
+          className="w-full text-left flex flex-col sm:flex-row gap-5 p-5 sm:items-center group"
+        >
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setShowModal(true);
+            }}
+            className="sm:w-56 shrink-0 hover:opacity-75 transition-opacity"
+            aria-label={`Voir les images de ${project.title}`}
+          >
+            <ProjectImage image={project.images[0]} icon={project.icon} alt={project.title} />
+          </button>
 
-        <div className="flex-1 flex items-start justify-between gap-4">
-          <div>
-            <h3 className="text-lg font-semibold text-foreground">
-              {project.title}
-            </h3>
-            <p className="mt-1 text-sm text-muted">{project.summary}</p>
+          <div className="flex-1 flex items-start justify-between gap-4">
+            <div>
+              <h3 className="text-lg font-semibold text-foreground">
+                {project.title}
+              </h3>
+              <p className="mt-1 text-sm text-muted">{project.summary}</p>
+            </div>
+            <motion.span
+              animate={{ rotate: expanded ? 180 : 0 }}
+              transition={{ duration: 0.25 }}
+              className="mt-1 text-muted shrink-0"
+            >
+              <FiChevronDown size={18} />
+            </motion.span>
           </div>
-          <motion.span
-            animate={{ rotate: expanded ? 180 : 0 }}
-            transition={{ duration: 0.25 }}
-            className="mt-1 text-muted shrink-0"
-          >
-            <FiChevronDown size={18} />
-          </motion.span>
-        </div>
-      </button>
+        </button>
 
-      <AnimatePresence initial={false}>
-        {expanded && (
-          <motion.div
-            key="content"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-6 pt-1 sm:pl-[15.5rem] flex flex-col gap-4 border-t border-white/5">
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
-                  Contexte
-                </p>
-                <p className="text-sm text-foreground/85">{project.context}</p>
-              </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
-                  Mon rôle
-                </p>
-                <p className="text-sm text-foreground/85">{project.role}</p>
-              </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
-                  Stack
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {project.stack.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted"
-                    >
-                      {item}
-                    </span>
-                  ))}
+        <AnimatePresence initial={false}>
+          {expanded && (
+            <motion.div
+              key="content"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="px-5 pb-6 pt-1 sm:pl-[15.5rem] flex flex-col gap-4 border-t border-white/5">
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
+                    Contexte
+                  </p>
+                  <p className="text-sm text-foreground/85">{project.context}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
+                    Mon rôle
+                  </p>
+                  <p className="text-sm text-foreground/85">{project.role}</p>
+                </div>
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
+                    Stack
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.stack.map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-muted"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
+                    Résultat
+                  </p>
+                  <p className="text-sm text-foreground/85">{project.result}</p>
                 </div>
               </div>
-              <div>
-                <p className="text-xs font-medium uppercase tracking-wider text-accent mb-1">
-                  Résultat
-                </p>
-                <p className="text-sm text-foreground/85">{project.result}</p>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
+
+      <ProjectModal
+        project={project}
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+      />
+    </>
   );
 }
 
