@@ -37,11 +37,7 @@ export const projects: Project[] = [
     result:
       "Site fonctionnel avec paiement en ligne opérationnel, prêt pour l'ouverture du commerce, accompagné d'une présence de contenu sur les réseaux sociaux.",
     icon: FiShoppingCart,
-    images: [
-      "/projects/marche-herblay-1.png",
-      "/projects/marche-herblay-2.png",
-      "/projects/marche-herblay-3.png",
-    ],
+    images: ["/projects/marche-herblay-1.png"],
   },
   {
     id: "eventsync",
@@ -56,12 +52,7 @@ export const projects: Project[] = [
     result:
       "Plateforme fonctionnelle gérant speakers, sessions et favoris, développée en collaboration Git avec plusieurs contributeurs sans perte de code.",
     icon: FiCalendar,
-    images: [
-      "/projects/eventsync-1.png",
-      "/projects/eventsync-2.png",
-      "/projects/eventsync-3.png",
-      "/projects/eventsync-4.png",
-    ],
+    images: ["/projects/eventsync-1.png"],
   },
   {
     id: "patrilang",
@@ -75,11 +66,7 @@ export const projects: Project[] = [
     result:
       "Scénario familial modélisé et documenté sur le site, restitué via un livre blanc et une présentation orale.",
     icon: FiPieChart,
-    images: [
-      "/projects/patrilang-1.png",
-      "/projects/patrilang-2.png",
-      "/projects/patrilang-3.png",
-    ],
+    images: ["/projects/patrilang-1.png", "/projects/patrilang-3.png"],
     liveUrl: "https://patrimoine-project.freedev.app/",
   },
   {
@@ -94,17 +81,7 @@ export const projects: Project[] = [
     result:
       "Pipeline opérationnel et dashboard en ligne (Atlas AQI) consultable publiquement, restituant les résultats sans accès au code.",
     icon: FiWind,
-    images: [
-      "/projects/air-quality-1.png",
-      "/projects/air-quality-2.png",
-      "/projects/air-quality-3.png",
-      "/projects/air-quality-4.png",
-      "/projects/air-quality-5.png",
-      "/projects/air-quality-6.png",
-      "/projects/air-quality-7.png",
-      "/projects/air-quality-8.png",
-      "/projects/air-quality-9.png",
-    ],
+    images: ["/projects/air-quality-1.png"],
     liveUrl: "https://aqi-dashboard-tau.vercel.app/",
   },
   {
@@ -147,12 +124,7 @@ export const projects: Project[] = [
     result:
       "Site vitrine fonctionnel démontrant la maîtrise du Website Builder au sein d'une configuration Odoo complète réalisée en équipe.",
     icon: FiCalendar,
-    images: [
-      "/projects/nathan-voyage-1.png",
-      "/projects/nathan-voyage-2.png",
-      "/projects/nathan-voyage-3.png",
-      "/projects/nathan-voyage-4.png",
-    ],
+    images: ["/projects/nathan-voyage-1.png"],
     liveUrl: "https://edu-agence-voyage1.odoo.com/",
   },
   {
