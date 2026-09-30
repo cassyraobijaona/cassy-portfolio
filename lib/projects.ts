@@ -133,11 +133,11 @@ export const projects: Project[] = [
   {
     id: "nathan-voyage",
     title: "Nathan Voyage",
-    category: "pro",
+    category: "academic",
     summary:
-      "Site d'agence de voyages pour Madagascar généré via Odoo Website Builder.",
+      "Site d'agence de voyages pour Madagascar généré via Odoo Website Builder (exercice ERP Odoo).",
     context:
-      "Agence de voyages proposant des circuits personnalisés et des séjours à Madagascar.",
+      "Exercice universitaire de préparation à l'examen ERP Odoo : concevoir un site d'agence de voyages avec Odoo Website Builder.",
     role: "Conception et mise en page du site via Odoo Website Builder, intégration des catalogues de voyages, création de contenu marketing.",
     stack: ["Odoo Website Builder", "Marketing digital"],
     result:
