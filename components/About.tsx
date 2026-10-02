@@ -64,11 +64,16 @@ const blocks: Block[] = [
           { icon: FiTrendingUp, label: "Plans marketing" },
           { icon: FiSearch, label: "SEO" },
           { icon: SiTiktok, label: "Contenu vidéo / TikTok" },
+          { icon: FiUsers, label: "Stratégie réseaux sociaux" },
         ],
       },
       {
         label: "ERP & processus métier",
-        skills: [{ icon: SiOdoo, label: "Odoo" }],
+        skills: [
+          { icon: SiOdoo, label: "Odoo" },
+          { icon: FiGitBranch, label: "Digitalisation des processus" },
+          { icon: FiTarget, label: "Analyse des besoins métier" },
+        ],
       },
     ],
   },

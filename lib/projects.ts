@@ -29,7 +29,7 @@ export const projects: Project[] = [
     title: "Le Marché d'Herblay",
     category: "pro",
     summary:
-      "Site web et contenu marketing pour un commerce de fruits et légumes en cours d'ouverture en France.",
+      "Site e-commerce développé pour un commerce indépendant, du premier brief à la mise en production — incluant un paiement en ligne réel.",
     context:
       "Le commerce n'avait aucune présence en ligne au démarrage du projet : pas de site, pas de nom de domaine, pas de stratégie de contenu.",
     role: "Développement du site (Next.js), intégration du paiement Stripe, création de contenu vidéo pour les réseaux sociaux (TikTok), gestion administrative (nom de domaine, adresse email professionnelle).",
@@ -44,7 +44,7 @@ export const projects: Project[] = [
     title: "EventSync",
     category: "academic",
     summary:
-      "Plateforme de gestion de conférences développée en équipe.",
+      "Backend et frontend d'une plateforme de conférences développés en équipe, avec gestion réelle des conflits Git.",
     context:
       "Projet de groupe avec plusieurs contributeurs travaillant sur le même dépôt, nécessitant une coordination technique réelle.",
     role: "Développement complet de l'entité Speaker (backend) et de l'intégralité du frontend, gestion des branches Git et résolution des conflits de fusion en équipe.",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     id: "patrilang",
     title: "PatriLang",
     category: "academic",
-    summary: "Modélisation de patrimoine financier.",
+    summary: "Un langage dédié pour rendre lisible un patrimoine financier complexe, du prototype à la présentation.",
     context:
       "Projet de groupe visant à rendre lisible la structure d'un patrimoine financier complexe à travers un langage conçu pour ça.",
     role: "Génération des données d'un scénario familial complet, création d'un site, rédaction d'un livre blanc, préparation de la présentation finale.",
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     id: "pipeline-qualite-air",
     title: "Pipeline qualité de l'air",
     category: "academic",
-    summary: "Pipeline ETL de collecte et traitement de données de qualité de l'air sur plusieurs villes.",
+    summary: "Pipeline ETL automatisé transformant des données brutes multi-villes en dashboard consultable en ligne.",
     context:
       "Projet du cours Données nécessitant l'automatisation de la collecte, du traitement et de la visualisation de données multi-sources.",
     role: "Conception et mise en place du pipeline avec Apache Airflow et Docker, du scraping brut jusqu'aux visualisations finales.",
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     id: "ecostyle",
     title: "EcoStyle",
     category: "academic",
-    summary: "Plan marketing digital pour une marque de mode éco-responsable fictive.",
+    summary: "Stratégie marketing complète pour une marque éco-responsable, construite autour d'objectifs mesurables.",
     context:
       "Projet de groupe avec un enjeu de crédibilité : construire une stratégie de communication cohérente avec un positionnement écologique, sans tomber dans le greenwashing.",
     role: "Construction des personas, définition des objectifs SMART, élaboration du calendrier éditorial et des KPIs de suivi.",
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     id: "dancehall",
     title: "DanceHall",
     category: "academic",
-    summary: "Site WordPress pour une académie de danse.",
+    summary: "Site vitrine WordPress conçu et livré en solo pour une académie de danse.",
     context:
       "Exercice individuel pour un bonus E-réputation & Blogging, du choix du thème à la mise en ligne complète du site.",
     role: "Structuration du site via Elementor, définition des styles globaux et de la hiérarchie visuelle des pages.",
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     id: "nathan-voyage",
     title: "Nathan Voyage",
     category: "academic",
-    summary: "Gestion de voyage avec Odoo.",
+    summary: "Site vitrine construit avec le Website Builder d'Odoo, au sein d'une configuration ERP complète réalisée en équipe.",
     context:
       "Exercice pratique de groupe sur l'ERP Odoo, avec une répartition des modules entre les membres de l'équipe.",
     role: "Spécialisation sur la partie site : conception et structuration complète du site vitrine (accueil, présentation, catalogue de voyages) via le module Website Builder, pendant que le reste de l'équipe configurait les autres modules Odoo (comptabilité, etc.).",
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     id: "portfolio",
     title: "Portfolio personnel",
     category: "pro",
-    summary: "Site personnel conçu pour présenter mon profil et mes projets de manière structurée.",
+    summary: "Portfolio professionnel conçu, développé et déployé en autonomie, de la structure du contenu au nom de domaine.",
     context:
       "Besoin d'un support distinct du portfolio académique, orienté recherche d'alternance et de missions freelance.",
     role: "Définition du positionnement et de la structure du contenu, choix techniques (Next.js, Tailwind CSS, Framer Motion), développement des pages, intégration du formulaire de contact et du CV.",
